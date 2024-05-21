@@ -15,7 +15,6 @@ func (s ParcelStore) Add(p Parcel) (int, error) {
 	// реализуйте добавление строки в таблицу parcel, используйте данные из переменной p
 
 	// верните идентификатор последней добавленной записи
-	return 0, nil
 	ip, err := s.db.Exec("INSERT INTO parcel (client, status, address, created_at) VALUES (?, ?, ?, ?)", p.Client, p.Status, p.Address, p.CreatedAt)
 	if err != nil {
 		return 0, err
@@ -41,9 +40,7 @@ func (s ParcelStore) GetByClient(client int) ([]Parcel, error) {
 	// реализуйте чтение строк из таблицы parcel по заданному client
 	// здесь из таблицы может вернуться несколько строк
 	// заполните срез Parcel данными из таблицы
-	var res []Parcel
 
-	return res, nil
 	rows, err := s.db.Query("SELECT number, client, status, address, created_at FROM parcel WHERE client = ?", client)
 	if err != nil {
 		return nil, err
